@@ -9,6 +9,11 @@
         <h2>div 1</h2>
         <div id="app1">
             {{ message }}
+
+            <ul>
+                <li v-for="i in arr">{{ i.text }}</li>
+            </ul>
+
             <p v-if="testif">v-if 테스트 할건디!</p>
             <p v-else="testif">v-else 테스트 할건디!</p>
             <p v-show="testif">v-show 테스트 할건디! </p>
@@ -20,7 +25,12 @@
                 el: "#app1",
                 data: {
                     message : "hello~~~~~~~~~~~!~!~!~!!!!!!!!!",
-                    testif : false
+                    testif : false,
+                    arr: [
+                        {text : 'for 1'},
+                        {text : 'for 2'},
+                        {text : 'for 3'}
+                    ]
                 }
             });
         </script>
