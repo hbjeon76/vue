@@ -5,24 +5,42 @@
         <title>Vue.js sample</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
-    <body style="font-size:80px;">
+    <body style="font-size:50px;">
         <h2>div 1</h2>
-        <div id="app1">
+        <div class="app1">
             {{ message }}
-
+            <br/>
+            
             <ul>
                 <li v-for="i in arr">{{ i.text }}</li>
             </ul>
+            <br/>
+            
+            <div v-for="(value, name, index) in object">
+                {{ index }}. {{ name }} : {{ value }}
+            </div>
+            <br/>
 
             <p v-if="testif">v-if 테스트 할건디!</p>
             <p v-else="testif">v-else 테스트 할건디!</p>
             <p v-show="testif">v-show 테스트 할건디! </p>
+            <br/>
+
+            <button v-on:click="changeMsg" style="font-size:50px;">메세지 변경</button>
+            <br/>
+
+            <button v-on:click="num += 1" style="font-size:50px;">Add</button>
+            <p>{{ num }}</p>
+            <br/>
+
+            <p>{{ message2 }}</p>
+            <input v-model="message2" style="font-size:50px;" >
         </div>
         <br />
 
         <script>
             var app1 = new Vue({
-                el: "#app1",
+                el: ".app1",
                 data: {
                     message : "hello~~~~~~~~~~~!~!~!~!!!!!!!!!",
                     testif : false,
@@ -30,7 +48,35 @@
                         {text : 'for 1'},
                         {text : 'for 2'},
                         {text : 'for 3'}
-                    ]
+                    ],
+                    object : {
+                        title : "How to do lists in Vue",
+                        author : "Jane Doe",
+                        publishedAt : "2016_04-10"
+                    },
+                    num: 0,
+                    message2: "input이랑 연결 뽕"
+                },
+                methods: {
+                    changeMsg : function() {
+                        this.message = '클릭함 !'
+                    }
+                },
+                beforeCreate: function() {
+                    alert('beforeCreate');
+                },
+                created: function() {
+                    alert('created');
+                },
+                mounted: function() {
+                    alert('mounted');
+                    this.message = 'mounted!!!!!!!!!!!!!!!'
+                },
+                beforeUpdate: function() {
+                    alert('beforeUpdate');
+                },
+                updated: function() {
+                    alert('updated');
                 }
             });
         </script>
