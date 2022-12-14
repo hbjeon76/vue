@@ -8,26 +8,14 @@
     <body>
         <div id="app">{{ message }}</div>
         <br />
-        
+
         <script>
             var app = new Vue({
+                el: "#app",
+                data: {
+                    message : "hello~~~~~~~~~~~!~!~!~!!!!!!!!!"
+                }
             });
         </script>
     </body>
 </html>
-
-
-
-<body>
-    <div id="app">{{ message }}</div>
-    <br />
-    
-    <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
-          message: "Hello Vue!",
-        }
-      });
-    </script>
-  </body>
